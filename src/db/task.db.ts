@@ -1,9 +1,16 @@
-import { Document, Schema } from 'mongoose'
+import { Document, ObjectId, Schema } from 'mongoose'
 import { Database } from './init-database'
 
 const COLLECTION_NAME = 'Task'
 
 export interface ITask extends Document {
+    taskId: string,
+    userId: string,
+    taskContent: string
+}
+
+export type TaskIdType = {
+    _id: ObjectId,
     taskId: string,
     userId: string,
     taskContent: string
