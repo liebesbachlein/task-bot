@@ -17,6 +17,7 @@ export class TelegramBot {
         
         
         this.bot.launch()
+
     }
 
     private onStart(ctx: any) {

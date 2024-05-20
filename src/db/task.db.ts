@@ -6,14 +6,8 @@ const COLLECTION_NAME = 'Task'
 export interface ITask extends Document {
     taskId: string,
     userId: string,
-    taskContent: string
-}
-
-export type TaskIdType = {
-    _id: ObjectId,
-    taskId: string,
-    userId: string,
-    taskContent: string
+    taskContent: string,
+    isComplete: boolean
 }
 
 const TaskSchema = new Schema<ITask>(
@@ -21,6 +15,7 @@ const TaskSchema = new Schema<ITask>(
         taskId: {
             type: String,
             required: true,
+            unique: true
         },
         userId: {
             type: String,
@@ -30,6 +25,10 @@ const TaskSchema = new Schema<ITask>(
             type: String,
             default: '',
         },
+        isComplete: {
+            type: Boolean,
+            default: false
+        }
     },
     {
         timestamps: true,
