@@ -12,16 +12,9 @@ export class TelegramBot {
     }
 
     public init() {
-
-        (new StartCommand(this.bot)).handle()
-        
-        
+        this.bot.start((ctx) => {
+            (new StartCommand(this.bot, ctx)).handle()
+        })
         this.bot.launch()
-
-    }
-
-    private onStart(ctx: any) {
-        
-
     }
 }

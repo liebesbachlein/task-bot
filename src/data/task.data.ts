@@ -86,6 +86,16 @@ export class TaskData {
             
     }
 
+    public static async deleteTaskId(userId: string, taskId: string): Promise<void> {
+        
+        await TaskModel.deleteOne({userId: userId, taskId: taskId}).then((res) => {
+            if(res) {
+                console.log(`User ${userId} deleted task ${taskId}`)
+            }
+        })
+            
+    }
+
     public static async deleteId(data: TaskType | null): Promise<void> {
         if(!data) {
             return
@@ -122,7 +132,7 @@ export class TaskData {
 
 }
 
-function getRandomInt(min:number, max:number):number {
+export function getRandomInt(min:number, max:number):number {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
